@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,19 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using spritz.Properties;
+using System.Runtime.InteropServices;
+
 
 namespace spritz
 {
     public partial class Form1 : Form
     {
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        
         private string[] book_text;
         private bool status = false;
         private int word_index = 0;
 
+
         public Form1()
         {
             InitializeComponent();
-            button2.Image = Resources.Symbols_Play_32xLG;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -136,9 +143,18 @@ namespace spritz
         private void button6_Click(object sender, EventArgs e)
         {
             if (fontDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
                 richTextBox1.Font = fontDialog1.Font;
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, 0xA1, 0x2, 0);
+                return;
             }
+            base.OnMouseMove(e);
         }
 }
 }
