@@ -89,10 +89,11 @@
             // 
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(340, 0);
+            this.button5.Location = new System.Drawing.Point(340, 1);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(16, 16);
             this.button5.TabIndex = 1;
+            this.button5.TabStop = false;
             this.button5.Tag = "";
             this.button5.Text = "X";
             this.button5.UseVisualStyleBackColor = true;
@@ -120,7 +121,7 @@
             // 
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button6.Image = global::spritz.Properties.Resources.ProcessWindow_6545;
-            this.button6.Location = new System.Drawing.Point(308, 85);
+            this.button6.Location = new System.Drawing.Point(317, 85);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(32, 32);
             this.button6.TabIndex = 10;

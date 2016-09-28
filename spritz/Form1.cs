@@ -126,6 +126,7 @@ namespace spritz
                 word_index = 0;
             else
                 word_index -= 10;
+            update_text(book_text[word_index]);
             timer1.Enabled = timer_state;
         }
 
@@ -137,6 +138,7 @@ namespace spritz
                 word_index = book_text.Length - 1;
             else
                 word_index += 10;
+            update_text(book_text[word_index]);
             timer1.Enabled = timer_state;
         }
 
