@@ -113,22 +113,24 @@ namespace spritz
 
         private void button3_Click(object sender, EventArgs e)
         {
+            bool timer_state = timer1.Enabled;
             timer1.Enabled = false;
             if (word_index - 10 < 0)
                 word_index = 0;
             else
                 word_index -= 10;
-            timer1.Enabled = true;
+            timer1.Enabled = timer_state;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            bool timer_state = timer1.Enabled;
             timer1.Enabled = false;
             if (word_index + 10 > book_text.Length)
                 word_index = book_text.Length - 1;
             else
                 word_index += 10;
-            timer1.Enabled = true;
+            timer1.Enabled = timer_state;
         }
 
         private void button6_Click(object sender, EventArgs e)
