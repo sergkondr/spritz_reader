@@ -103,6 +103,9 @@ namespace spritz
                 string text = System.IO.File.ReadAllText(openFileDialog1.FileName, Encoding.Default);
                 book_text = text.Split(' ');
                 button2.Enabled = true;
+                string[] file_name = openFileDialog1.FileName.Split('\\');
+                update_text(file_name[file_name.Length - 1]);
+                word_index = 0;
             }
         }
 
