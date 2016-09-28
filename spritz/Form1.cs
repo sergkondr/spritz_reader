@@ -37,22 +37,25 @@ namespace spritz
 
         private void update_text(string word)
         {
-            richTextBox1.SelectionStart = 0;
-            richTextBox1.SelectionLength = 20;
-            richTextBox1.SelectionColor = Color.Black;
-
-            if (word.IndexOf("\r\n") > 0) word = word.Remove(word.IndexOf("\r\n"), 2);
-            int index = get_colored_letter_number(word);
-            richTextBox1.ForeColor = Color.Black;
-
+            paint_text_black();
+            if (word.IndexOf("\r\n") > 0) 
+                word = word.Remove(word.IndexOf("\r\n"), 2);
+            int index = get_colored_letter_index(word);
             richTextBox1.Text = word;
             richTextBox1.SelectionStart = index;
             richTextBox1.SelectionLength = 1;
             richTextBox1.SelectionColor = Color.Red;
-            richTextBox1.Location = get_point(index);
+            richTextBox1.Location = get_richTextBox_location(index);
         }
 
-        private int get_colored_letter_number(string word)
+        private void paint_text_black()
+        {
+            richTextBox1.SelectionStart = 0;
+            richTextBox1.SelectionLength = 20;
+            richTextBox1.SelectionColor = Color.Black;
+        }
+
+        private int get_colored_letter_index(string word)
         {
             char[] chars_to_trim = {'.', ',',':',';','!','?','-'};
             if (word.Trim(chars_to_trim).Length >= 18)
@@ -69,7 +72,7 @@ namespace spritz
                 return 0;
         }
 
-        private Point get_point(int index)
+        private Point get_richTextBox_location(int index)
         {
             int X = richTextBox1.GetPositionFromCharIndex(index).X;
             int X_next = richTextBox1.GetPositionFromCharIndex(index + 1).X;
@@ -78,17 +81,19 @@ namespace spritz
             return new Point(125 - X - letter_width, Y);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void start_stop_reading()
         {
             timer1.Interval = 60 * 1000 / Convert.ToInt32(comboBox1.Text);
             if (status)
             {
+                //stop reading
                 button2.Image = Resources.Symbols_Play_32xLG;
                 timer1.Enabled = false;
                 status = false;
             }
             else
             {
+                //start reading
                 button2.Image = Resources.Symbols_Pause_32xLG;
                 timer1.Enabled = true;
                 status = true;
@@ -97,7 +102,7 @@ namespace spritz
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void open_book()
         {
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -108,6 +113,40 @@ namespace spritz
                 update_text(file_name[file_name.Length - 1]);
                 word_index = 0;
             }
+        }
+
+        private void go_back_in_reading(int words_back)
+        {
+            bool timer_state = timer1.Enabled;
+            timer1.Enabled = false;
+            if (word_index - words_back < 0)
+                word_index = 0;
+            else
+                word_index -= words_back;
+            update_text(book_text[word_index]);
+            timer1.Enabled = timer_state;
+        }
+
+        private void go_forward_in_reading(int words_forward)
+        {
+            bool timer_state = timer1.Enabled;
+            timer1.Enabled = false;
+            if (word_index + words_forward > book_text.Length)
+                word_index = book_text.Length - 1;
+            else
+                word_index += words_forward;
+            update_text(book_text[word_index]);
+            timer1.Enabled = timer_state;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            start_stop_reading();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            open_book();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -124,26 +163,12 @@ namespace spritz
 
         private void button3_Click(object sender, EventArgs e)
         {
-            bool timer_state = timer1.Enabled;
-            timer1.Enabled = false;
-            if (word_index - 10 < 0)
-                word_index = 0;
-            else
-                word_index -= 10;
-            update_text(book_text[word_index]);
-            timer1.Enabled = timer_state;
+            go_back_in_reading(10);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            bool timer_state = timer1.Enabled;
-            timer1.Enabled = false;
-            if (word_index + 10 > book_text.Length)
-                word_index = book_text.Length - 1;
-            else
-                word_index += 10;
-            update_text(book_text[word_index]);
-            timer1.Enabled = timer_state;
+            go_forward_in_reading(10);
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -154,6 +179,7 @@ namespace spritz
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
+            //window dragging
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
