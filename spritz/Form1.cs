@@ -48,51 +48,18 @@ namespace spritz
         private int get_colored_letter_number(string word)
         {
             char[] chars_to_trim = {'.', ',',':',';','!','?','-'};
-            int i = 0;
-            switch (word.Trim(chars_to_trim).Length)
-            {
-                case 1:
-                    i = 1;
-                    break;
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                {
-                    i = 2;
-                    break;
-                }
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                {
-                    i = 3;
-                    break;
-                }
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                {
-                    i = 4;
-                    break;
-                }
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                {
-                    i = 5;
-                    break;
-                }
-                default:
-                {
-                    i = 6;
-                    break;
-                }
-            }
-            return i - 1;
+            if (word.Trim(chars_to_trim).Length >= 18)
+                return 5;
+            else if (word.Trim(chars_to_trim).Length >= 14)
+                return 4;
+            else if (word.Trim(chars_to_trim).Length >= 10)
+                return 3;
+            else if (word.Trim(chars_to_trim).Length >= 6)
+                return 2;
+            else if (word.Trim(chars_to_trim).Length >= 2)
+                return 1;
+            else 
+                return 0;
         }
 
         private Point get_point(int index)
