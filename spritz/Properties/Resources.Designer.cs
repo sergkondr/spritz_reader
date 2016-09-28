@@ -83,9 +83,9 @@ namespace spritz.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap folder_Open_32xLG {
+        internal static System.Drawing.Bitmap Font_6007 {
             get {
-                object obj = ResourceManager.GetObject("folder_Open_32xLG", resourceCulture);
+                object obj = ResourceManager.GetObject("Font_6007", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace spritz.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ProcessWindow_6545 {
+        internal static System.Drawing.Bitmap OpenFileDialog_692 {
             get {
-                object obj = ResourceManager.GetObject("ProcessWindow_6545", resourceCulture);
+                object obj = ResourceManager.GetObject("OpenFileDialog_692", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
