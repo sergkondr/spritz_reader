@@ -76,9 +76,8 @@ namespace spritz
         {
             int X = richTextBox1.GetPositionFromCharIndex(index).X;
             int X_next = richTextBox1.GetPositionFromCharIndex(index + 1).X;
-            int Y = richTextBox1.Location.Y;
-            int letter_width = (X_next - X) / 2;
-            return new Point(125 - X - letter_width, Y);
+            int letter_width = X + (X_next - X) / 2;
+            return new Point(125 - letter_width, richTextBox1.Location.Y);
         }
 
         private void start_stop_reading()

@@ -150,9 +150,9 @@
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Location = new System.Drawing.Point(1, 20);
+            this.panel3.Location = new System.Drawing.Point(0, 19);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(358, 118);
+            this.panel3.Size = new System.Drawing.Size(360, 121);
             this.panel3.TabIndex = 12;
             // 
             // button1
@@ -231,7 +231,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(360, 138);
+            this.ClientSize = new System.Drawing.Size(360, 140);
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -240,6 +240,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Spritz v0.02";
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

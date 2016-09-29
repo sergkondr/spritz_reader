@@ -97,19 +97,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\play.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\play - копия.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder-open-outline-small.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\frame.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder_Open_32xLG.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Symbols_Pause_32xLG.png" />
@@ -141,13 +129,9 @@
     <None Include="Resources\arrow_previous_16xLG.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ProcessWindow_6545.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Journal.ico" />
     <None Include="Resources\OpenFileDialog_692.png" />
     <None Include="Resources\Font_6007.png" />
-    <None Include="Resources\Font_6007_32x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
