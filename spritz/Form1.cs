@@ -107,6 +107,7 @@ namespace spritz
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string text = System.IO.File.ReadAllText(openFileDialog1.FileName, Encoding.Default);
+                text = text.Replace("\r\n", " ");
                 book_text = text.Split(' ');
                 button2.Enabled = true;
                 string[] file_name = openFileDialog1.FileName.Split('\\');
