@@ -147,6 +147,8 @@ namespace spritz
         private void button1_Click(object sender, EventArgs e)
         {
             open_book();
+            button3.Enabled = true;
+            button4.Enabled = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -187,6 +189,11 @@ namespace spritz
                 return;
             }
             base.OnMouseMove(e);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
 }
 }
